@@ -30,7 +30,7 @@ Route::prefix('familias-profesionales')->group(function () {
     }) -> where('id', '[0-9]+');
 
     Route::get('/edit/{id}', function ($id) {
-        return 'Modificar famiilia profesional ' . $id;
+        return 'Modificar familia profesional ' . $id;
     }) -> where('id', '[0-9]+');
 });
 
