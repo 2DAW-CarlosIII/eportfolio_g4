@@ -33,8 +33,8 @@ Route::get('familias-profesionales/edit/{id}', function($id){
 
 Route::get('perfil/{id?}', function($id = null){
     if ($id) {
-        return "Visualizar el currículo de $id";
+        return "Visualizar el usuario de $id";
     } else {
-        return "Visualizar el currículo propio";
+        return "Visualizar el usuario propio";
     }
 })-> where('id', '[0-9]+');
