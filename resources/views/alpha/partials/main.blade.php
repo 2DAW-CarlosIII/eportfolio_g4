@@ -44,7 +44,7 @@
     <!-- content -->
     <section>
         <header class="major">
-            <h2 style="color: rgb(0, 0, 0)">Content</h2>
+            <h2 style="color: rgb(99, 1, 1)">Content</h2>
         </header>
         <div class="row">
             <div class="container">
