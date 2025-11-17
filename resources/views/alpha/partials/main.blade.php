@@ -2,7 +2,7 @@
     <!-- content -->
     <section>
         <header class="major">
-            <h2>Content</h2>
+            <h2 style="color: white">Content</h2>
         </header>
         <div class="row">
             <div class="container">
