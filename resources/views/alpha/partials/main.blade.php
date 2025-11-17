@@ -1,15 +1,4 @@
 <section id="main" class="container">
-    <!-- content -->
-    <section>
-        <header class="major">
-            <h2 style="color: white">Content</h2>
-        </header>
-        <div class="row">
-            <div class="container">
-                @yield('content')
-            </div>
-        </div>
-    </section>
     <section class="box special">
         <header class="major">
             <h2>Introducing the ultimate mobile app
@@ -52,7 +41,17 @@
             </section>
         </div>
     </section>
-
+    <!-- content -->
+    <section>
+        <header class="major">
+            <h2 style="color: rgb(0, 0, 0)">Content</h2>
+        </header>
+        <div class="row">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
+    </section>
     <div class="row">
         <div class="col-6 col-12-narrower">
 
