@@ -10,19 +10,19 @@
          </div>
          <div class="card-body" style="padding:30px">
 
-            <form method="POST">
+            <form action="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'update'], ['id' => $id]) }}" method="POST">
 
 	            @csrf
                 @method('PUT')
 
 	            <div class="form-group">
-	               <label for="nombre">Nombre</label>
-	               <input type="text" name="nombre" id="nombre" class="form-control" >
+	               <label for="codigo">Código</label>
+	               <input type="text" name="codigo" id="codigo" class="form-control" value="{{ $familiaProfesional['codigo'] }}">
 	            </div>
 
 	            <div class="form-group">
-	            	<label for="docente_id">Docente</label>
-	               <input type="number" name="docente_id" id="docente_id">
+	            	<label for="nombre">Nombre</label>
+	               <input type="text" name="nombre" id="nombre" class="form-control" value="{{ $familiaProfesional['nombre'] }}">
 	            </div>
 
 	            <div class="form-group text-center">

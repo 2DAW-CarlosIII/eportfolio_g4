@@ -15,13 +15,13 @@
 	            @csrf
 
 	            <div class="form-group">
-	               <label for="nombre">Código</label>
-	               <input type="text" name="nombre" id="nombre" class="form-control">
+	               <label for="codigo">Código</label>
+	               <input type="text" name="codigo" id="codigo" class="form-control">
 	            </div>
 
 	            <div class="form-group">
-	            	<label for="docente_id">Nombre</label>
-	               <input type="number" name="docente_id" id="docente_id">
+	            	<label for="nombre">Nombre</label>
+	               <input type="text" name="nombre" id="nombre" class="form-control">
 	            </div>
 
 	            <div class="form-group text-center">
