@@ -4,7 +4,7 @@
 
     <div class="row">
 
-    @foreach ($familiasProfesionales as $key => $familiaProfesional)
+    @foreach ($familias_profesionales as $key => $familiaProfesional)
 
     <div class="col-4 col-6-medium col-12-small">
         <section class="box">
@@ -13,13 +13,11 @@
                 <h3>{{ $familiaProfesional['nombre'] }}</h3>
             </header>
             <p>
-                <a href="http://github.com/2DAW-CarlosIII/{{ $familiaProfesional['dominio'] }}">
-                    http://github.com/2DAW-CarlosIII/{{ $familiaProfesional['dominio'] }}
-                </a>
+                {{ $familiaProfesional['codigo'] }}
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\ProyectosController::class, 'getShow'], ['id' => $key] ) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $key] ) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>
