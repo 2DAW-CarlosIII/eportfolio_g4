@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FamiliasProfesionalesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', [HomeController::class, 'getHome']);
 
 // ----------------------------------------
 Route::get('login', function () {
-    return "Login usuario";
+    return view('auth.login');
 });
 Route::get('logout', function () {
     return "Logout usuario";
@@ -17,33 +17,16 @@ Route::get('logout', function () {
 
 // ----------------------------------------
 Route::prefix('familias-profesionales')->group(function () {
-    Route::get('/', function () {
-        return 'Listado familias profesionales';
-    });
+    Route::get('/', [FamiliasProfesionalesController::class, 'getIndex']);
 
-    Route::get('create', function () {
-        return 'Añadir familia profesional';
-    });
+    Route::get('create', [FamiliasProfesionalesController::class, 'getCreate']);
 
-    Route::get('/show/{id}', function ($id) {
-        return 'Vista detalle familia profesional ' . $id;
-    }) -> where('id', '[0-9]+');
+    Route::get('show/{id}', [FamiliasProfesionalesController::class, 'getShow'])->where('id', '[0-9]+');
 
-    Route::get('/edit/{id}', function ($id) {
-        return 'Modificar familia profesional ' . $id;
-    }) -> where('id', '[0-9]+');
+    Route::get('edit/{id}', [FamiliasProfesionalesController::class, 'getEdit'])->where('id', '[0-9]+');
+
+    Route::post('store', [FamiliasProfesionalesController::class, 'store']);
+
+    Route::put('update/{id}', [FamiliasProfesionalesController::class, 'update'])->where('id', '[0-9]+');
 });
-
-
-// ----------------------------------------
-Route::get('perfil/{id?}', function ($id = null) {
-    if ($id === null){
-        return 'Visualizar el usuario propio';
-    }
-    else{
-        return 'Visualizar el usuario de ' . $id;
-
-    }
-}) -> where('id', '[0-9]+');
-
 
