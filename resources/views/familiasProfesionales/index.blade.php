@@ -17,7 +17,7 @@
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $key] ) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $familiaProfesional->id] ) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>
