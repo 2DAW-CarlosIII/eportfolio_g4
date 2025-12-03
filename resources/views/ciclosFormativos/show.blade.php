@@ -15,7 +15,7 @@
             <h4><b>Grado: </b>{{ $cicloFormativo['grado'] }}</h4>
             <p><b>Descripción: </b>{{ $cicloFormativo['descripcion'] }}</p>
 
-            <a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getEdit'], ['id' => $id]) }}"
+            <a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getEdit'], ['id' => $cicloFormativo->id]) }}"
                 class="button primary"> Editar
 
             </a>

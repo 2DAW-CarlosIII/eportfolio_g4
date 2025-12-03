@@ -6,6 +6,17 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\CicloFormativo;
 
+/*
+$table->id();
+            $table->timestamps();
+            $table -> string('familia_profesional_id') -> nullable();
+            $table -> string('nombre', 255);
+            $table -> string('codigo', 50);
+            $table->enum('grado', ['medio', 'superior', 'basica']);
+            $table -> text('descripcion') -> nullable();
+
+*/
+
 class CiclosFormativosTableSeeder extends Seeder
 {
     private function seedCiclosFormativos(){
@@ -15,13 +26,12 @@ class CiclosFormativosTableSeeder extends Seeder
         foreach (self::$ciclos as $ciclo) {
 
             CicloFormativo::insert([
-                'codigo' => $ciclo['codCiclo'],
-                'nombre' => $ciclo['nombre'],
                 'familia_profesional_id' => $ciclo['codFamilia'],
-                'grado' => $ciclo['grado'],
-                'descripcion' => $ciclo['descripcion'],
+                'nombre' => $ciclo['nombre'],
+                'codigo' => $ciclo['codCiclo'],
+                'grado' => $ciclo['grado']
             ]);
-       }
+        }
     }
 
     public function run() {
@@ -29,7 +39,7 @@ class CiclosFormativosTableSeeder extends Seeder
         $this->command->info('¡Tabla ciclos_formativos inicializada con datos!');
     }
 
-     private static $ciclos = array(
+     public static $ciclos = array(
         array('codFamilia' => 'ADG','grado' => 'medio','codCiclo' => 'ACEC2','nombre' => 'Técnico en Actividades Ecuestres'),
         array('codFamilia' => 'ADG','grado' => 'superior','codCiclo' => 'ACFI3','nombre' => 'Técnico Superior en Acondicionamiento Físico'),
         array('codFamilia' => 'ADG','grado' => 'basica','codCiclo' => 'ACID1','nombre' => 'Profesional Básico en Acceso y Conservación en Instalaciones Deportivas'),

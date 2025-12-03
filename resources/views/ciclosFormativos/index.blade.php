@@ -10,23 +10,23 @@
         <section class="box">
             <a href="#" class="image featured"><img src="{{ asset('/images/mp-logo.png') }}" alt="" /></a>
             <header>
-                <h3>{{ $cicloFormativo['familiaProfesionalId'] }}</h3>
+                <h3>{{ $cicloFormativo->familiaProfesionalId }}</h3>
             </header>
             <p>
-                {{ $cicloFormativo['nombre'] }}
+                {{ $cicloFormativo->nombre }}
             </p>
             <p>
-                {{ $cicloFormativo['codigo'] }}
+                {{ $cicloFormativo->codigo }}
             </p>
             <p>
-                {{ $cicloFormativo['grado'] }}
+                {{ $cicloFormativo->grado }}
             </p>
             <p>
-                {{ $cicloFormativo['descripcion'] }}
+                {{ $cicloFormativo->descripcion }}
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getShow'], ['id' => $key] ) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getShow'], ['id' => $cicloFormativo->id]) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>

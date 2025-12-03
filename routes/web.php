@@ -5,7 +5,7 @@ use App\Http\Controllers\CiclosFormativosController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'getHome']);
 
 // ----------------------------------------
 Route::get('login', function () {
@@ -36,12 +36,12 @@ Route::prefix('ciclos-formativos')->group(function () {
 
     Route::get('create', [CiclosFormativosController::class, 'getCreate']);
 
-    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id');
+    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+');
 
-    Route::get('edit/{id}', [CiclosFormativosController::class, 'getEdit'])->where('id');
+    Route::get('edit/{id}', [CiclosFormativosController::class, 'getEdit'])->where('id', '[0-9]+');
 
     Route::post('store', [CiclosFormativosController::class, 'store']);
 
-    Route::put('update/{id}', [CiclosFormativosController::class, 'update'])->where('id');
+    Route::put('update/{id}', [CiclosFormativosController::class, 'update'])->where('id', '[0-9]+');
 });
 

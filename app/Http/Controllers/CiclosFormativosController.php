@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CicloFormativo;
 
 class CiclosFormativosController extends Controller
 {
@@ -10,14 +11,14 @@ class CiclosFormativosController extends Controller
     public function getIndex()
     {
         return view('ciclosFormativos.index', [
-            'ciclos_formativos' => self::$ciclos
+            'ciclos_formativos' => CicloFormativo::all()
         ]);
     }
 
     public function getShow($id)
     {
         return view('ciclosFormativos.show')
-            ->with('cicloFormativo',  self::$ciclos[$id])
+            ->with('cicloFormativo',  CicloFormativo::findOrFail($id))
             ->with('id', $id);
     }
 
@@ -29,7 +30,7 @@ class CiclosFormativosController extends Controller
     public function getEdit($id)
     {
         return view('ciclosFormativos.edit')
-            ->with('cicloFormativo',  self::$ciclos[$id])
+            ->with('cicloFormativo',  CicloFormativo::findOrFail($id))
             ->with('id', $id);
     }
 
