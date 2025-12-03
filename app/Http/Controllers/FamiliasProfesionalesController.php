@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CriterioEvaluacion;
 use Illuminate\Http\Request;
 
 class FamiliasProfesionalesController extends Controller
@@ -38,6 +39,7 @@ class FamiliasProfesionalesController extends Controller
 
     public function getIndex()
     {
+       
         return view('familiasProfesionales.index', [
             'familias_profesionales' => self::$familias_profesionales
         ]);
