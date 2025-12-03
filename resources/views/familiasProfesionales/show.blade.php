@@ -12,8 +12,8 @@
 
             <h2><b>Nombre: </b>{{ $familiaProfesional['nombre'] }}</h2>
             <h4><b>Codigo: </b>{{ $familiaProfesional['codigo'] }}</h4>
-           
-            <a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getEdit'], ['id' => $id]) }}"
+
+            <a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getEdit'], ['id' => $familiaProfesional->id]) }}"
                 class="button primary"> Editar
 
             </a>
