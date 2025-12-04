@@ -17,13 +17,10 @@ class DatabaseSeeder extends Seeder
      */
         public function run(): void
     {
-        Model::unguard();
+       Model::unguard();
         Schema::disableForeignKeyConstraints();
 
-        // llamadas a otros ficheros de seed
-        $this->call(CriteriosEvaluacionTableSeeder::class);
-
-        // llamadas a otros ficheros de seed
+        $this->call(FamiliasProfesionalesTableSeeder::class);
 
         Model::reguard();
 
