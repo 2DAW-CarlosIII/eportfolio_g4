@@ -16,16 +16,19 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+        public function run(): void
     {
-        // User::factory(10)->create();
         Model::unguard();
         Schema::disableForeignKeyConstraints();
 
-        $this->call(CiclosFormativosTableSeeder::class);
+        // llamadas a otros ficheros de seed
+        $this->call(CriteriosEvaluacionTableSeeder::class);
+
+        // llamadas a otros ficheros de seed
 
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
     }
+
 }

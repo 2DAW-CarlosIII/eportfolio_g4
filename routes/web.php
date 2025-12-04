@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CriteriosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CiclosFormativosController;
 use App\Http\Controllers\FamiliasProfesionalesController;
+use App\Models\CriterioEvaluacion;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'getHome']);
@@ -30,18 +32,17 @@ Route::prefix('familias-profesionales')->group(function () {
 
     Route::put('update/{id}', [FamiliasProfesionalesController::class, 'update'])->where('id', '[0-9]+');
 });
+// ----------------------------------------
+Route::prefix('criterios')->group(function () {
+    Route::get('/', [CriteriosController::class, 'getIndex']);
 
-Route::prefix('ciclos-formativos')->group(function () {
-    Route::get('/', [CiclosFormativosController::class, 'getIndex']);
+    Route::get('create', [CriteriosController::class, 'getCreate']);
 
-    Route::get('create', [CiclosFormativosController::class, 'getCreate']);
+    Route::get('show/{id}', [CriteriosController::class, 'getShow'])->where('id', '[0-9]+');
 
-    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+');
+    Route::get('edit/{id}', [CriteriosController::class, 'getEdit'])->where('id', '[0-9]+');
 
-    Route::get('edit/{id}', [CiclosFormativosController::class, 'getEdit'])->where('id', '[0-9]+');
+    Route::post('store', [CriteriosController::class, 'store']);
 
-    Route::post('store', [CiclosFormativosController::class, 'store']);
-
-    Route::put('update/{id}', [CiclosFormativosController::class, 'update'])->where('id', '[0-9]+');
+    Route::put('update/{id}', [CriteriosController::class, 'update'])->where('id', '[0-9]+');
 });
-
