@@ -61,4 +61,8 @@ class FamiliasProfesionalesController extends Controller
             ->with('familia', self::$familias_profesionales[$id])
             ->with('id', $id);
     }
+
+
+
+    
 };
