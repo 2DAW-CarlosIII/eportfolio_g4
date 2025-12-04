@@ -33,4 +33,20 @@ class FamiliasProfesionalesController extends Controller
             ->with('familiaProfesional',  FamiliaProfesional::findOrFail($id))
             ->with('id', $id);
     }
+
+    public function postCreate(Request $request) {
+        $familia_profesional = new FamiliaProfesional();
+        $familia_profesional = $request->input('codigo');
+        $familia_profesional = $request->input('nombre');
+        $familia_profesional->save();
+        return redirect()->action([FamiliasProfesionalesController::class, 'getShow'], ['id' => $familia_profesional->id]);
+    }
+
+    public function putCreate(Request $request, $id) {
+        $familia_profesional = FamiliaProfesional::findOrFail($id);
+        $familia_profesional = $request->input('codigo');
+        $familia_profesional = $request->input('nombre');
+        $familia_profesional->save();
+        return redirect()->action([FamiliasProfesionalesController::class, 'getShow'], ['id' => $familia_profesional->id]);
+    }
 };
