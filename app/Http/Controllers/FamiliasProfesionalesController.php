@@ -36,4 +36,23 @@ class FamiliasProfesionalesController extends Controller
         return view('familiasProfesionales.edit')
             ->with('familiaProfesional',  $familias_profesionales);
     }
+
+    public function postCreate(Request $request)
+    {
+        $familiaProfesional  = new FamiliaProfesional();
+        $familiaProfesional ->codigo = $request->input('codigo');
+        $familiaProfesional ->nombre = $request->input('nombre');
+        $familiaProfesional ->save();
+
+        return redirect()->route('familias.show', ['id' => $familiaProfesional->id]);
+    }
+    public function putCreate(Request $request, $id)
+    {
+        $familiaProfesional  = FamiliaProfesional::findOrFail($id);
+        $familiaProfesional ->codigo = $request->input('codigo');
+        $familiaProfesional ->nombre = $request->input('nombre');
+        $familiaProfesional ->save();
+
+        return redirect()->route('familias.show', [$familiaProfesional->id]);
+    }
 };

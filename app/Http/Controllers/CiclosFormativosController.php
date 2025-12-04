@@ -34,4 +34,31 @@ class CiclosFormativosController extends Controller
             ->with('id', $id);
     }
 
+
+    public function postCreate(Request $request)
+    {
+        $cicloFormativo  = new CicloFormativo();
+
+        $cicloFormativo->familia_profesional_id = $request->input('familiaProfesionalId');
+        $cicloFormativo->nombre = $request->input('nombre');
+        $cicloFormativo->codigo = $request->input('codigo');
+        $cicloFormativo->grado = $request->input('grado');
+        $cicloFormativo->descripcion = $request->input('descripcion');
+
+        $cicloFormativo->save();
+
+        return redirect()->route('ciclo.show', ['id' => $cicloFormativo->id]);
+    }
+    public function putCreate(Request $request, $id)
+    {
+        $cicloFormativo  = CicloFormativo::findOrFail($id);
+        $cicloFormativo->familia_profesional_id = $request->input('familiaProfesionalId');
+        $cicloFormativo->nombre = $request->input('nombre');
+        $cicloFormativo->codigo = $request->input('codigo');
+        $cicloFormativo->grado = $request->input('grado');
+        $cicloFormativo->descripcion = $request->input('descripcion');
+        $cicloFormativo->save();
+
+        return redirect()->route('ciclo.show', ['id' => $cicloFormativo->id]);
+    }
 };

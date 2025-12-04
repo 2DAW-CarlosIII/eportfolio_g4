@@ -11,7 +11,7 @@ class CriteriosController extends Controller
 
     public function getIndex()
     {
-        $criterios =CriterioEvaluacion::all();
+        $criterios = CriterioEvaluacion::all();
         return view('criteriosEvaluacion.index', [
             'criterios' => $criterios
         ]);
@@ -19,7 +19,7 @@ class CriteriosController extends Controller
 
     public function getShow($id)
     {
-        $criterios =CriterioEvaluacion::findOrFail($id);
+        $criterios = CriterioEvaluacion::findOrFail($id);
         return view('criteriosEvaluacion.show')
             ->with('criterio', $criterios)
             ->with('id', $id);
@@ -32,9 +32,30 @@ class CriteriosController extends Controller
 
     public function getEdit($id)
     {
-        $criterios =CriterioEvaluacion::findOrFail($id);
+        $criterios = CriterioEvaluacion::findOrFail($id);
         return view('criteriosEvaluacion.edit')
             ->with('criterio', $criterios)
             ->with('id', $id);
+    }
+
+    public function postCreate(Request $request)
+    {
+        $criterio = new CriterioEvaluacion();
+        $criterio->codigo = $request->input('codigo');
+        $criterio->descripcion = $request->input('descripcion');
+        $criterio->orden = $request->input('orden');
+        $criterio->save();
+
+        return redirect()->route('criterios.show', ['id' => $criterio->id]);
+    }
+    public function putCreate(Request $request, $id)
+    {
+        $criterio = CriterioEvaluacion::findOrFail($id);
+        $criterio->codigo = $request->input('codigo');
+        $criterio->descripcion = $request->input('descripcion');
+        $criterio->orden = $request->input('orden');
+        $criterio->save();
+
+        return redirect()->route('criterios.show', [$criterio->id]);
     }
 };

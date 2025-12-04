@@ -24,13 +24,15 @@ Route::prefix('familias-profesionales')->group(function () {
 
     Route::get('create', [FamiliasProfesionalesController::class, 'getCreate']);
 
-    Route::get('show/{id}', [FamiliasProfesionalesController::class, 'getShow'])->where('id', '[0-9]+');
+    Route::get('show/{id}', [FamiliasProfesionalesController::class, 'getShow'])->where('id', '[0-9]+')->name('familias.show');
 
     Route::get('edit/{id}', [FamiliasProfesionalesController::class, 'getEdit'])->where('id', '[0-9]+');
 
     Route::post('store', [FamiliasProfesionalesController::class, 'store']);
 
     Route::put('update/{id}', [FamiliasProfesionalesController::class, 'update'])->where('id', '[0-9]+');
+
+     Route::post('/familias/create', [FamiliasProfesionalesController::class, 'postCreate'])->name('familias.postCreate');
 });
 // ----------------------------------------
 Route::prefix('criterios')->group(function () {
@@ -38,25 +40,30 @@ Route::prefix('criterios')->group(function () {
 
     Route::get('create', [CriteriosController::class, 'getCreate']);
 
-    Route::get('show/{id}', [CriteriosController::class, 'getShow'])->where('id', '[0-9]+');
+    Route::get('show/{id}', [CriteriosController::class, 'getShow'])
+        ->where('id', '[0-9]+')
+        ->name('criterios.show');
 
     Route::get('edit/{id}', [CriteriosController::class, 'getEdit'])->where('id', '[0-9]+');
 
     Route::post('store', [CriteriosController::class, 'store']);
 
     Route::put('update/{id}', [CriteriosController::class, 'update'])->where('id', '[0-9]+');
+
+    Route::post('/criterios/create', [CriteriosController::class, 'postCreate'])->name('criterios.postCreate');
 });
 Route::prefix('ciclos-formativos')->group(function () {
     Route::get('/', [CiclosFormativosController::class, 'getIndex']);
 
     Route::get('create', [CiclosFormativosController::class, 'getCreate']);
 
-    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+');
+    Route::get('show/{id}', [CiclosFormativosController::class, 'getShow'])->where('id', '[0-9]+')->name('ciclo.show');
 
     Route::get('edit/{id}', [CiclosFormativosController::class, 'getEdit'])->where('id', '[0-9]+');
 
     Route::post('store', [CiclosFormativosController::class, 'store']);
 
     Route::put('update/{id}', [CiclosFormativosController::class, 'update'])->where('id', '[0-9]+');
-});
 
+    Route::post('/ciclo/create', [CiclosFormativosController::class, 'postCreate'])->name('ciclo.postCreate');
+});
