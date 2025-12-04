@@ -45,7 +45,7 @@ class FamiliasProfesionalesController extends Controller
         ]);
     }
 
-    public function getShow($id)
+    public function getShow($id) 
     {
         return view('familiasProfesionales.show')
             ->with('familiaProfesional',  self::$familias_profesionales[$id])

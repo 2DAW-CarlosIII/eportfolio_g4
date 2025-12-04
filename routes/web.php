@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\CriteriosController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CiclosFormativosController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Models\CriterioEvaluacion;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'getHome']);
 
 // ----------------------------------------
 Route::get('login', function () {
