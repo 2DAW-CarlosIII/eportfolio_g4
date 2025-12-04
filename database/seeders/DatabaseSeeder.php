@@ -15,15 +15,16 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+        public function run(): void
     {
        Model::unguard();
         Schema::disableForeignKeyConstraints();
 
-        $this->call (FamiliasProfesionalesTableSeeder::class);
+        $this->call(FamiliasProfesionalesTableSeeder::class);
 
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
     }
+
 }

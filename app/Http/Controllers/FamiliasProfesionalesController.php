@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FamiliaProfesional;
+use App\Models\CriterioEvaluacion;
 use Illuminate\Http\Request;
 
 class FamiliasProfesionalesController extends Controller
