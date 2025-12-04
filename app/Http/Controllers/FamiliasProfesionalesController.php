@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FamiliasProfesionalesController extends Controller
 {
-
+   
     public static $familias_profesionales = array(
         array('codigo' => 'ADG','nombre' => 'ACTIVIDADES FÍSICAS Y DEPORTIVAS'),
         array('codigo' => 'AFD','nombre' => 'ADMINISTRACIÓN Y GESTIÓN'),
@@ -39,7 +39,7 @@ class FamiliasProfesionalesController extends Controller
     public function getIndex()
     {
         return view('familiasProfesionales.index', [
-            'familias_profesionales' => self::$familias_profesionales
+            'familias' => self::$familias_profesionales
         ]);
     }
 
@@ -58,7 +58,11 @@ class FamiliasProfesionalesController extends Controller
     public function getEdit($id)
     {
         return view('familiasProfesionales.edit')
-            ->with('familiaProfesional',  self::$familias_profesionales[$id])
+            ->with('familia', self::$familias_profesionales[$id])
             ->with('id', $id);
     }
+
+
+
+    
 };
