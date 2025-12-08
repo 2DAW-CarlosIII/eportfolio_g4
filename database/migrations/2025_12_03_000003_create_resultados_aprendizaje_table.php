@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ResultadoAprendizaje;
 
 class ResultadosAprendizajesController extends Controller
 {
     public function getIndex()
     {
-        // Obtener todos los registros
         $resultados = ResultadoAprendizaje::all();
 
-        return view('resultados-aprendizaje.index')
+        return view('resultadosAprendizaje.index')
             ->with('resultadosAprendizajes', $resultados);
     }
 
@@ -20,21 +18,20 @@ class ResultadosAprendizajesController extends Controller
     {
         $resultado = ResultadoAprendizaje::findOrFail($id);
 
-        return view('resultados-aprendizaje.show')
+        return view('resultadosAprendizaje.show')
             ->with('resultado', $resultado);
     }
 
     public function getCreate()
     {
-        return view('resultados-aprendizaje.create');
+        return view('resultadosAprendizaje.create');
     }
 
     public function getEdit($id)
     {
-
         $resultado = ResultadoAprendizaje::findOrFail($id);
 
-        return view('resultados-aprendizaje.edit')
+        return view('resultadosAprendizaje.edit')
             ->with('resultado', $resultado);
     }
 }
