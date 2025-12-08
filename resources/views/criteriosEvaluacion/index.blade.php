@@ -4,20 +4,20 @@
 
     <div class="row">
 
-    @foreach ($familiasProfesionales as $key => $familiaProfesional)
+    @foreach ($criterios as $criterio)
 
     <div class="col-4 col-6-medium col-12-small">
         <section class="box">
             <a href="#" class="image featured"><img src="{{ asset('/images/mp-logo.png') }}" alt="" /></a>
             <header>
-                <h3>{{ $familiaProfesional->nombre }}</h3>
+                <h3>{{ $criterio->codigo }}</h3>
             </header>
             <p>
-                {{ $familiaProfesional->codigo }}
+                {{ $criterio->descripcion }}
             </p>
             <footer>
                 <ul class="actions">
-                    <li><a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getShow'], ['id' => $familiaProfesional->id] ) }}" class="button alt">Más info</a></li>
+                    <li><a href="{{ action([App\Http\Controllers\CriteriosController::class, 'getShow'], [$criterio->id] ) }}" class="button alt">Más info</a></li>
                 </ul>
             </footer>
         </section>

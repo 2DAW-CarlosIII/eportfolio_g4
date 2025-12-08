@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\CiclosFormativosController;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Model;
@@ -15,9 +16,10 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+        public function run(): void
     {
-        // User::factory(10)->create();
+        Model::unguard();
+        Schema::disableForeignKeyConstraints();
 
         // User::factory()->create([
         //     'name' => 'Test User',
@@ -36,4 +38,5 @@ class DatabaseSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
     }
+
 }

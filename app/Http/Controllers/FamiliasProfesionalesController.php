@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\FamiliaProfesional;
 
+use App\Models\FamiliaProfesional;
 use Illuminate\Http\Request;
 
 class FamiliasProfesionalesController extends Controller
@@ -17,6 +18,7 @@ class FamiliasProfesionalesController extends Controller
 
     public function getShow($id)
     {
+        $familias_profesionales = FamiliaProfesional::findOrFail($id);
         return view('familiasProfesionales.show')
             ->with('familiaProfesional', FamiliaProfesional::findOrFail($id))
             ->with('id', $id);
@@ -24,11 +26,13 @@ class FamiliasProfesionalesController extends Controller
 
     public function getCreate()
     {
+
         return view('familiasProfesionales.create');
     }
 
     public function getEdit($id)
     {
+        $familias_profesionales = FamiliaProfesional::findOrFail($id);
         return view('familiasProfesionales.edit')
             ->with('familiaProfesional',  FamiliaProfesional::findOrFail($id))
             ->with('id', $id);
