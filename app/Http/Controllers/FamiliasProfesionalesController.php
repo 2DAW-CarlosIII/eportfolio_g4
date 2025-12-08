@@ -36,8 +36,8 @@ class FamiliasProfesionalesController extends Controller
 
     public function postCreate(Request $request) {
         $familia_profesional = new FamiliaProfesional();
-        $familia_profesional = $request->input('codigo');
-        $familia_profesional = $request->input('nombre');
+        $familia_profesional->codigo = $request->input('codigo');
+        $familia_profesional->nombre = $request->input('nombre');
         $familia_profesional->save();
         return redirect()->action([FamiliasProfesionalesController::class, 'getShow'], ['id' => $familia_profesional->id]);
     }
