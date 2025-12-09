@@ -1,37 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use App\Models\ResultadoAprendizaje;
+return new class extends Migration
 
-class ResultadosAprendizajesController extends Controller
+
 {
-    public function getIndex()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        $resultados = ResultadoAprendizaje::all();
-
-        return view('resultadosAprendizaje.index')
-            ->with('resultadosAprendizajes', $resultados);
+        Schema::create('resultados_aprendizaje', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('modulo_formativo_id')->nullable();
+            $table->string('codigo', 50);
+            $table->string('descripcion');
+            $table->float('peso_porcentaje')
+                ->nullable()
+                ->check('peso_porcentaje >= 0 AND peso_porcentaje <= 100');
+            $table->integer('orden')->check('orden >= 1');
+            $table->timestamps();
+        });
     }
 
-    public function getShow($id)
+
+    public function down(): void
     {
-        $resultado = ResultadoAprendizaje::findOrFail($id);
-
-        return view('resultadosAprendizaje.show')
-            ->with('resultado', $resultado);
+        Schema::dropIfExists('resultados_aprendizaje');
     }
-
-    public function getCreate()
-    {
-        return view('resultadosAprendizaje.create');
-    }
-
-    public function getEdit($id)
-    {
-        $resultado = ResultadoAprendizaje::findOrFail($id);
-
-        return view('resultadosAprendizaje.edit')
-            ->with('resultado', $resultado);
-    }
-}
+};
