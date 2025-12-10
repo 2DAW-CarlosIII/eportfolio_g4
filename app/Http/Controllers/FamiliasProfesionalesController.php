@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\FamiliaProfesional;
 
 use App\Models\FamiliaProfesional;
 use Illuminate\Http\Request;
@@ -8,19 +9,18 @@ use Illuminate\Http\Request;
 class FamiliasProfesionalesController extends Controller
 {
 
-
     public function getIndex()
     {
-        $familias_profesionales = FamiliaProfesional::all();
-        return view('familiasProfesionales.index')
-            ->with('familiasProfesionales', $familias_profesionales);
+        return view('familiasProfesionales.index', [
+            'familias_profesionales' => FamiliaProfesional::all()
+        ]);
     }
 
     public function getShow($id)
     {
         $familias_profesionales = FamiliaProfesional::findOrFail($id);
         return view('familiasProfesionales.show')
-            ->with('familiaProfesional', $familias_profesionales)
+            ->with('familiaProfesional', FamiliaProfesional::findOrFail($id))
             ->with('id', $id);
     }
 
@@ -34,25 +34,23 @@ class FamiliasProfesionalesController extends Controller
     {
         $familias_profesionales = FamiliaProfesional::findOrFail($id);
         return view('familiasProfesionales.edit')
-            ->with('familiaProfesional',  $familias_profesionales);
+            ->with('familiaProfesional',  FamiliaProfesional::findOrFail($id))
+            ->with('id', $id);
     }
 
-    public function postCreate(Request $request)
-    {
-        $familiaProfesional  = new FamiliaProfesional();
-        $familiaProfesional ->codigo = $request->input('codigo');
-        $familiaProfesional ->nombre = $request->input('nombre');
-        $familiaProfesional ->save();
-
-        return redirect()->route('familias.show', ['id' => $familiaProfesional->id]);
+    public function postCreate(Request $request) {
+        $familia_profesional = new FamiliaProfesional();
+        $familia_profesional->codigo = $request->input('codigo');
+        $familia_profesional->nombre = $request->input('nombre');
+        $familia_profesional->save();
+        return redirect()->action([FamiliasProfesionalesController::class, 'getShow'], ['id' => $familia_profesional->id]);
     }
-    public function putCreate(Request $request, $id)
-    {
-        $familiaProfesional  = FamiliaProfesional::findOrFail($id);
-        $familiaProfesional ->codigo = $request->input('codigo');
-        $familiaProfesional ->nombre = $request->input('nombre');
-        $familiaProfesional ->save();
 
-        return redirect()->route('familias.show', [$familiaProfesional->id]);
+    public function putCreate(Request $request, $id) {
+        $familia_profesional = FamiliaProfesional::findOrFail($id);
+        $familia_profesional = $request->input('codigo');
+        $familia_profesional = $request->input('nombre');
+        $familia_profesional->save();
+        return redirect()->action([FamiliasProfesionalesController::class, 'getShow'], ['id' => $familia_profesional->id]);
     }
 };

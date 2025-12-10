@@ -21,19 +21,22 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         Schema::disableForeignKeyConstraints();
 
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        Model::unguard();
+        Schema::disableForeignKeyConstraints();
+
         // llamadas a otros ficheros de seed
-        $this->call(CriteriosEvaluacionTableSeeder::class);
-
-        $this->call(CiclosFormativosTableSeeder::class);
-
-        $this->call (FamiliasProfesionalesTableSeeder::class);
-        
-        $this->call(ResultadosAprendizajeTableSeeder::class);
-
+        $this->call(FamiliasProfesionalesTableSeeder::class);
+        // llamadas a otros ficheros de seed
 
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
+
     }
 
 }
