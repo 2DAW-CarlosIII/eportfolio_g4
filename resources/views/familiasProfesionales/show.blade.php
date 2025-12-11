@@ -12,17 +12,15 @@
 
             <h2><b>Nombre: </b>{{ $familiaProfesional->nombre }}</h2>
             <h4><b>Codigo: </b>{{ $familiaProfesional->codigo }}</h4>
-
+@auth
             <a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getEdit'], ['id'=>$familiaProfesional->id]) }}"
                 class="button primary"> Editar
-
+@endauth
             </a>
             <a href="{{ action([App\Http\Controllers\FamiliasProfesionalesController::class, 'getIndex']) }}"
                 class="button primary"> Listado familias profesionales
 
             </a>
-
-
         </div>
     </div>
 @endsection
