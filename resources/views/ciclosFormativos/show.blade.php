@@ -15,10 +15,13 @@
             <h4><b>Grado: </b>{{ $cicloFormativo['grado'] }}</h4>
             <p><b>Descripción: </b>{{ $cicloFormativo['descripcion'] }}</p>
 
+@auth
             <a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getEdit'], ['id' => $cicloFormativo->id]) }}"
-                class="button primary"> Editar
-
+               class="button primary">
+               Editar
             </a>
+@endauth
+
             <a href="{{ action([App\Http\Controllers\CiclosFormativosController::class, 'getIndex']) }}"
                 class="button primary"> Listado ciclos formativos
 
@@ -28,3 +31,11 @@
         </div>
     </div>
 @endsection
+
+
+
+
+
+
+
+

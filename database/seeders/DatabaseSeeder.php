@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CiclosFormativosTableSeeder::class);
 
         $this->call (FamiliasProfesionalesTableSeeder::class);
-        
+
         $this->call(ResultadosAprendizajeTableSeeder::class);
 
 
