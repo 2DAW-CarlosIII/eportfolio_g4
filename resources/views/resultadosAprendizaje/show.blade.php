@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
     <div class="row m-4">
 
         <div class="col-sm-4">
@@ -19,24 +18,24 @@
             <p><strong>Orden:</strong> {{ $resultado->orden }}</p>
             <p><strong>Módulo formativo ID:</strong> {{ $resultado->modulo_formativo_id }}</p>
 
-            <ul class="actions">
-                <li>
-                    <a href="{{ action([App\Http\Controllers\ResultadosAprendizajesController::class, 'getEdit'], ['id' => $resultado->id]) }}"
-                       class="button alt">
-                        Editar resultado
-                    </a>
-                </li>
+            @auth
+                <a href="{{ action([App\Http\Controllers\ResultadosAprendizajesController::class, 'getEdit'], ['id' => $resultado->id]) }}"
+                    class="button alt">
+                    Editar resultado
+                </a>
 
-                <li>
-                    <a href="{{ action([App\Http\Controllers\ResultadosAprendizajesController::class, 'getIndex']) }}"
-                       class="button alt">
-                        Volver al listado
-                    </a>
-                </li>
+            @endauth
+
+
+
+            <a href="{{ action([App\Http\Controllers\ResultadosAprendizajesController::class, 'getIndex']) }}"
+                class="button alt">
+                Volver al listado
+            </a>
+
             </ul><br>
 
         </div>
 
     </div>
-
 @endsection
