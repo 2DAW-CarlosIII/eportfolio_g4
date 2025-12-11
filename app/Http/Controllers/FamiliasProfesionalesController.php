@@ -26,7 +26,6 @@ class FamiliasProfesionalesController extends Controller
 
     public function getCreate()
     {
-
         return view('familiasProfesionales.create');
     }
 
@@ -53,6 +52,6 @@ class FamiliasProfesionalesController extends Controller
         $familiaProfesional ->nombre = $request->input('nombre');
         $familiaProfesional ->save();
 
-        return redirect()->route('familias.show', [$familiaProfesional->id]);
+        return redirect()->route('familias.show', ['id' => $familiaProfesional->id]);
     }
 };
