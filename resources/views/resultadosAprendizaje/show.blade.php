@@ -21,10 +21,12 @@
 
             <ul class="actions">
                 <li>
+                    @auth
                     <a href="{{ action([App\Http\Controllers\ResultadosAprendizajesController::class, 'getEdit'], ['id' => $resultado->id]) }}"
                        class="button alt">
                         Editar resultado
                     </a>
+                    @endauth
                 </li>
 
                 <li>
