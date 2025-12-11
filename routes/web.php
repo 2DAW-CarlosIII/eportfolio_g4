@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'getHome'])->name('home');;
 
 // ----------------------------------------
 Route::prefix('familias-profesionales')->group(function () {
@@ -48,7 +48,6 @@ Route::prefix('criterios-evaluacion')->group(function () {
     Route::group(['middleware' => 'auth'], function () {
 
         Route::get('create', [CriteriosController::class, 'getCreate']);
-        Route::post('store', [CriteriosController::class, 'store']);
         Route::get('edit/{id}', [CriteriosController::class, 'getEdit'])->where('id', '[0-9]+');
         Route::post('store', [CriteriosController::class, 'store']);
         Route::put('update/{id}', [CriteriosController::class, 'update'])->where('id', '[0-9]+');
