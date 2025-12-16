@@ -47,6 +47,12 @@
             @endif
         </div>
 
+        <div class="form-group">
+            <x-input-label for="avatar" :value="__('Avatar')"></x-input-label>
+            <img src="{{ Storage::url($user->avatar) }}" alt="" style="height:100px">
+            <input class="mt-2" type="file" class="form-control" id="avatar" name="avatar" placeholder="Avatar">
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
