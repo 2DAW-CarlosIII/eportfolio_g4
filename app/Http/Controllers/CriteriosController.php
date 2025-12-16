@@ -48,7 +48,7 @@ class CriteriosController extends Controller
 
         return redirect()->route('criterios.show', ['id' => $criterio->id]);
     }
-    public function putCreate(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $criterio = CriterioEvaluacion::findOrFail($id);
         $criterio->codigo = $request->input('codigo');

@@ -54,7 +54,7 @@ class ResultadosAprendizajesController extends Controller
         return redirect()->route('resultados-aprendizaje.show', ['id' => $resultado->id]);
     }
 
-    public function putCreate(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $resultado = ResultadoAprendizaje::findOrFail($id);
 

@@ -46,7 +46,7 @@ Route::prefix('familias-profesionales')->group(function () {
         });
 });
 
-Route::prefix('criterios')->group(function () {
+Route::prefix('criterios-evaluacion')->group(function () {
 
     Route::get('/', [CriteriosController::class, 'getIndex']);
     Route::get('show/{id}', [CriteriosController::class, 'getShow'])
