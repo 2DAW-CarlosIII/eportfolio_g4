@@ -25,6 +25,11 @@
 	               <input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $criterio->descripcion }}">
 	            </div>
 
+                <div class="form-group">
+	            	<label for="nombre">Orden</label>
+	               <input type="text" name="orden" id="orden" class="form-control" value="{{ $criterio->orden }}">
+	            </div>
+
 	            <div class="form-group text-center">
 	               <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
 	                   Modificar criterio de evaluacion

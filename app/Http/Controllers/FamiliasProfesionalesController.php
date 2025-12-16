@@ -46,7 +46,7 @@ class FamiliasProfesionalesController extends Controller
 
         return redirect()->route('familias.show', ['id' => $familiaProfesional->id]);
     }
-    public function putCreate(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $familiaProfesional  = FamiliaProfesional::findOrFail($id);
         $familiaProfesional ->codigo = $request->input('codigo');

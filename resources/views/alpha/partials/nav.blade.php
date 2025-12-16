@@ -1,23 +1,27 @@
 <nav id="nav">
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-            <a href="#" class="icon solid fa-angle-down">Layouts</a>
-            <ul>
-                <li><a href="generic.html">Generic</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="elements.html">Elements</a></li>
+        @if (Route::has('login'))
+            @auth
+                <li><a href="{{ route('home') }}">Home</a></li>
                 <li>
-                    <a href="#">Submenu</a>
-                    <ul>
-                        <li><a href="#">Option One</a></li>
-                        <li><a href="#">Option Two</a></li>
-                        <li><a href="#">Option Three</a></li>
-                        <li><a href="#">Option Four</a></li>
-                    </ul>
+                    @include('alpha.partials.dropdown-user')
                 </li>
-            </ul>
-        </li>
-        <li><a href="#" class="button">Sign Up</a></li>
+            @else
+                <li>
+                    <a href="{{ route('login') }}"
+                        class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal">
+                        Log in
+                    </a>
+                </li>
+                @if (Route::has('register'))
+                    <li>
+                        <a href="{{ route('register') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                            Register
+                        </a>
+                    </li>
+                @endif
+            @endauth
+        @endif
     </ul>
 </nav>

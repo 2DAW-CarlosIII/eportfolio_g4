@@ -49,7 +49,7 @@ class CiclosFormativosController extends Controller
 
         return redirect()->route('ciclo.show', ['id' => $cicloFormativo->id]);
     }
-    public function putCreate(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $cicloFormativo  = CicloFormativo::findOrFail($id);
         $cicloFormativo->familia_profesional_id = $request->input('familiaProfesionalId');
