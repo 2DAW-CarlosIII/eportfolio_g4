@@ -47,16 +47,16 @@
             @endif
         </div>
 
-        @if ($user->avatar)
-            <div>
+         @if ($user->avatar)
+            <div class="form-group">
                 <x-input-label for="avatar" :value="__('Avatar')" />
-                <div class="mt-2">
-                    <img src="{{ Storage::url($user->avatar) }}" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
-                </div>
+                <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar">
+                <img src="{{ Storage::url($user->avatar) }}" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
             </div>
-
         @else
-            <div class="mt-2">
+             <div class="form-group">
+                <x-input-label for="avatar" :value="__('Avatar')" />
+                <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar">
                 <img src="https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
             </div>
         @endif
