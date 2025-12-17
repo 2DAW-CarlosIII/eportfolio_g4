@@ -27,12 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('evidencias', function (Blueprint $table) {
-            $table->dropColumn('estudiante_id');
-            $table->dropColumn('tarea_id');
-            $table->dropColumn('url');
-            $table->dropColumn('descripcion');
-            $table->dropColumn('estado_validacion');
-        });
+        Schema::dropIfExists('evidencias');
     }
 };
