@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -46,6 +46,20 @@
                 </div>
             @endif
         </div>
+
+         @if ($user->avatar)
+            <div class="form-group">
+                <x-input-label for="avatar" :value="__('Avatar')" />
+                <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar">
+                <img src="{{ Storage::url($user->avatar) }}" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
+            </div>
+        @else
+             <div class="form-group">
+                <x-input-label for="avatar" :value="__('Avatar')" />
+                <input type="file" class="form-control" id="avatar" name="avatar" placeholder="avatar">
+                <img src="https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
+            </div>
+        @endif
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

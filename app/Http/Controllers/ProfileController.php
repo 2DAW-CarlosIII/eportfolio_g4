@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
@@ -30,6 +32,11 @@ class ProfileController extends Controller
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->store('imagenes', 'public');
+            $request->user()->avatar = $path;
         }
 
         $request->user()->save();
