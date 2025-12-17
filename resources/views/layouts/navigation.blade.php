@@ -24,6 +24,18 @@
                     <x-slot name="trigger">
                         <button
                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            @if (Auth::user()->avatar)
+                                <div>
+                                    <div class="mt-2">
+                                        <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
+                                    </div>
+                                </div>
+                            @else
+                                <div class="mt-2">
+                                    <img src="https://www.transparentpng.com/thumb/user/gray-user-profile-icon-png-fP8Q1P.png" alt="Avatar" class="h-20 w-20 rounded-full object-cover">
+                                </div>
+                            @endif
+
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
@@ -35,9 +47,6 @@
                                 </svg>
                             </div>
                         </button>
-                        <div class="form-group">
-                            <img src="{{ Storage::url($user->avatar) }}" alt="" style="height:50px">
-                        </div>
                     </x-slot>
 
                     <x-slot name="content">
