@@ -3,6 +3,7 @@
 use App\Http\Controllers\CriteriosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CiclosFormativosController;
+use App\Http\Controllers\EvidenciasController;
 use App\Http\Controllers\FamiliasProfesionalesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResultadosAprendizajesController;
@@ -90,6 +91,22 @@ Route::prefix('resultados-aprendizaje')->group(function () {
         Route::put('update/{id}', [ResultadosAprendizajesController::class, 'update'])->where('id', '[0-9]+');
         Route::post('/resultados-aprendizaje/create', [ResultadosAprendizajesController::class, 'postCreate'])->name('resultados-aprendizaje.postCreate');
     });
+
+
 });
+Route::prefix('evidencias')->group(function () {
+
+        Route::get('/', [EvidenciasController::class, 'getIndex']);
+        Route::get('show/{id}', [EvidenciasController::class, 'getShow'])
+        ->where('id', '[0-9]+')->name('evidencias.show');
+
+        Route::group(['middleware' => 'auth'], function (){
+            Route::get('create', [EvidenciasController::class, 'getCreate']);
+            Route::get('edit/{id}', [EvidenciasController::class, 'getEdit'])->where('id', '[0-9]+');
+            Route::post('store', [EvidenciasController::class, 'store']);
+            Route::put('update/{id}', [EvidenciasController::class, 'update'])->where('id', '[0-9]+');
+            Route::post('/evidencias/create', [EvidenciasController::class, 'postCreate'])->name('evidencias.postCreate');
+        });
+    });
 
 require __DIR__.'/auth.php';
