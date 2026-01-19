@@ -30,11 +30,14 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         // llamadas a otros ficheros de seed
-        $this->call(CriteriosEvaluacionTableSeeder::class);
+
+        $this->call(FamiliasProfesionalesTableSeeder::class);
 
         $this->call(CiclosFormativosTableSeeder::class);
 
-        $this->call (FamiliasProfesionalesTableSeeder::class);
+        $this->call(ModulosFormativosTableSeeder::class);
+
+        $this->call(CriteriosEvaluacionTableSeeder::class);
 
         $this->call(ResultadosAprendizajeTableSeeder::class);
 
@@ -44,5 +47,4 @@ class DatabaseSeeder extends Seeder
 
         Schema::enableForeignKeyConstraints();
     }
-
 }
