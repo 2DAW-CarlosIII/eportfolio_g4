@@ -20,13 +20,13 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('familias-profesionales', FamiliaProfesionalController::class)
         ->parameters(['familias-profesionales' => 'familiaProfesional']);
 
-    Route::apiResource('ciclos-formativos', CicloFormativoController::class)
+    Route::apiResource('familias-profesionales.ciclos-formativos', CicloFormativoController::class)
         ->parameters([
             'familias-profesionales' => 'familia',
             'ciclos-formativos' => 'cicloFormativo'
         ]);
 
-    Route::apiResource('modulos-formativos', ModuloFormativoController::class)
+    Route::apiResource('ciclos-formativos.modulos-formativos', ModuloFormativoController::class)
         ->parameters([
             'modulos-formativos' => 'moduloFormativo'
         ]);
