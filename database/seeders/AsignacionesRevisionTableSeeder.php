@@ -6,7 +6,7 @@ use App\Models\AsignacionRevision;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AsignacionesRevisioTableSeeder extends Seeder
+class AsignacionesRevisionTableSeeder extends Seeder
 
 {
     use WithoutModelEvents;
@@ -38,7 +38,7 @@ foreach (self::$asignacionesRevision as $asignacionRevision) {
         'asignado_por_id'  => 1,
         'fecha_limite'     => '2026-02-01',
         'estado'           => 'pendiente',
-        
+
     ],
     [
         'evidencia_id'     => 2,

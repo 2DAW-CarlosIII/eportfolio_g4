@@ -40,6 +40,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(EvidenciasTableSeeder::class);
 
+        $this->call(AsignacionesRevisionTableSeeder::class);
+
+        $this->call(CriteriosTareasTableSeeder::class);
+
+        
+
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
