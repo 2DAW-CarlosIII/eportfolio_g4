@@ -12,7 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('evidencias', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary('id');
+            $table->unsignedBigInteger('evidencia_id');
+            $table->foreign('evidencia_id')
+            ->references('id')
+            ->on('evidencias');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users');
+            $table->float('puntuacion');
+            $table->enum('estado', ['pendiente']);
+            $table->text('observaciones');
             $table->timestamps();
         });
     }
