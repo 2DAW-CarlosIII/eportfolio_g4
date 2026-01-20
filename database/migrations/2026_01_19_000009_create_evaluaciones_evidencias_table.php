@@ -13,17 +13,19 @@ return new class extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary('id');
-            $table->unsignedBigInteger('evidencia_id');
+            $table->unsignedBigInteger('evidencia_id')->nullable();
             $table->foreign('evidencia_id')
             ->references('id')
-            ->on('evidencias');
-            $table->unsignedBigInteger('user_id');
+            ->on('evidencias')
+            ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
             ->references('id')
-            ->on('users');
-            $table->float('puntuacion');
-            $table->enum('estado', ['pendiente']);
-            $table->text('observaciones');
+            ->on('users')
+            ->onDelete('cascade');
+            $table->float('puntuacion')->nullable();
+            $table->enum('estado', ['pendiente', 'rechazada', 'validada']);
+            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }

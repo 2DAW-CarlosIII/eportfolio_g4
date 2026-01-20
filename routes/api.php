@@ -15,9 +15,15 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 // Rutas /api/v1
 Route::prefix('v1')->group(function () {
 
-    Route::apiResource('evaluaciones', EvaluacionController::class);
+    Route::apiResource('evaluaciones', EvaluacionController::class)
+    ->parameters([
+        'evaluaciones' => 'evaluacion'
+    ]);
 
-    Route::apiResource('comentarios', ComentarioController::class);
+    Route::apiResource('comentarios', ComentarioController::class)
+    ->parameters([
+        'comentarios' => 'comentario'
+    ]);
 
 });
 
