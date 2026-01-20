@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('criterios_evaluacion', function (Blueprint $table) {
 
-            $table->id();
+            $table->id()->primary();
             $table->integer('resultado_aprendizaje_id')->nullable();
             $table->string('codigo',50);
             $table->string('descripcion');
