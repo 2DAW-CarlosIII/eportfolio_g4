@@ -22,7 +22,7 @@ class CriteriosTareasTableSeeder extends Seeder
         CriterioTarea::truncate();
 
         foreach (self::$criteriosTarea as $criterioTarea) {
-            $c = new CriterioEvaluacion();
+            $c = new CriterioTarea();
 
             $c->tarea_id = $criterioTarea['tarea_id'];
             $c->actividad_id = $criterioTarea['actividad_id'];

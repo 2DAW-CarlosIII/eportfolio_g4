@@ -21,8 +21,8 @@ class AsignacionesRevisionTableSeeder extends Seeder
 foreach (self::$asignacionesRevision as $asignacionRevision) {
             $c = new AsignacionRevision();
 
-            $c->asignacion_revision_id = $asignacionRevision['asignacion_revision_id'];
             $c->evidencia_id = $asignacionRevision['evidencia_id'];
+            $c->revisor_id = $asignacionRevision['revisor_id'];
             $c->asignado_por_id = $asignacionRevision['asignado_por_id'];
             $c->fecha_limite = $asignacionRevision['fecha_limite'];
             $c->estado = $asignacionRevision['estado'];
