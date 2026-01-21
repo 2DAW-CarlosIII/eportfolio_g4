@@ -1,15 +1,19 @@
 <?php
+
 use App\Http\Controllers\API\CicloFormativoController;
-use App\Http\Controllers\API\FamiliaProfesionalController;
-use App\Http\Controllers\API\ModuloFormativoController;
+use App\Http\Controllers\API\ComentarioController;
 use App\Http\Controllers\API\CriterioEvaluacionController;
+use App\Http\Controllers\API\EvaluacionController;
+use App\Http\Controllers\API\FamiliaProfesionalController;
 use App\Http\Controllers\API\MatriculaController;
+use App\Http\Controllers\API\ModuloFormativoController;
 use App\Http\Controllers\API\ResultadoAprendizajeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
+
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -43,6 +47,16 @@ Route::prefix('v1')->group(function () {
         ->parameters([
             'modulos-formativos' => 'moduloFormativo'
         ]);
+
+    Route::apiResource('evaluaciones', EvaluacionController::class)
+    ->parameters([
+        'evaluaciones' => 'evaluacion'
+    ]);
+
+    Route::apiResource('comentarios', ComentarioController::class)
+    ->parameters([
+        'comentarios' => 'comentario'
+    ]);
 });
 
 
@@ -66,23 +80,3 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     return $response;
 
 })->where('any', '.*');
-
-
-//Rutas /appi/v1
-
-Route::prefix('v1')->group(function () {
-
-    Route::apiResource('familias-profesionales', FamiliaProfesionalController::class)
-        ->parameters(['familias-profesionales' => 'familiaProfesional']);
-
-    Route::apiResource('familias-profesionales.ciclos-formativos', CicloFormativoController::class)
-        ->parameters([
-            'familias-profesionales' => 'familia',
-            'ciclos-formativos' => 'cicloFormativo'
-        ]);
-
-    Route::apiResource('ciclos-formativos.modulos-formativos', ModuloFormativoController::class)
-        ->parameters([
-            'modulos-formativos' => 'moduloFormativo'
-        ]);
-});
