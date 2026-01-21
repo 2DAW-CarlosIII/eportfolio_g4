@@ -48,8 +48,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CriteriosTareasTableSeeder::class);
 
-
-
         $this->call(TareasTableSeeder::class);
 
         Model::reguard();
