@@ -10,6 +10,9 @@ use App\Http\Controllers\API\ModuloFormativoController;
 use App\Http\Controllers\API\ResultadoAprendizajeController;
 use App\Http\Controllers\API\AsignacionRevisionController;
 use App\Http\Controllers\API\CriterioTareaController;
+use App\Http\Controllers\API\EvidenciasController as APIEvidenciasController;
+use App\Http\Controllers\API\TareasController;
+use App\Http\Controllers\EvidenciasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,12 +46,11 @@ Route::prefix('v1')->group(function () {
         ->parameters([
             'familias-profesionales' => 'familia',
             'ciclos-formativos' => 'cicloFormativo'
-        ]);
+    ]);
 
-    Route::apiResource('ciclos-formativos.modulos-formativos', ModuloFormativoController::class)
-        ->parameters([
+    Route::apiResource('ciclos-formativos.modulos-formativos', ModuloFormativoController::class)->parameters([
             'modulos-formativos' => 'moduloFormativo'
-        ]);
+    ]);
 
     Route::apiResource('evaluaciones', EvaluacionController::class)
     ->parameters([
@@ -73,6 +75,21 @@ Route::prefix('v1')->group(function () {
             'evidencias' => 'evidencia',
             'asignaciones_revision' => 'asignacionRevision'
     ]);
+
+     Route::apiResource('tareas', TareasController::class)->parameters([
+            'tareas' => 'tarea'
+        ]);
+
+    Route::apiResource('tareas.evidencias', APIEvidenciasController::class)
+        ->parameters([
+            'tareas' => 'tarea',
+            'evidencias' => 'evidencia'
+    ]);
+
+    Route::apiResource('criterios-evaluacion.tareas', TareasController::class)->parameters([
+        'criterios-evaluacion' => 'criterioEvaluacion',
+        'tareas' => 'tarea'
+    ]);
 });
 
 
@@ -96,4 +113,5 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     }
     return $response;
 
-})->where('any', '.*');
+})->where('any', '.*'); //->middleware('auth:sanctum');
+

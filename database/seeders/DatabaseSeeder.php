@@ -21,10 +21,11 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        User::factory()->create([
+        /*User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        */
 
         Model::unguard();
         Schema::disableForeignKeyConstraints();
@@ -48,6 +49,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CriteriosTareasTableSeeder::class);
 
 
+
+        $this->call(TareasTableSeeder::class);
 
         Model::reguard();
 
