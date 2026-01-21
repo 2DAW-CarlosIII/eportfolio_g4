@@ -8,6 +8,8 @@ use App\Http\Controllers\API\FamiliaProfesionalController;
 use App\Http\Controllers\API\MatriculaController;
 use App\Http\Controllers\API\ModuloFormativoController;
 use App\Http\Controllers\API\ResultadoAprendizajeController;
+use App\Http\Controllers\API\AsignacionRevisionController;
+use App\Http\Controllers\API\CriterioTareaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
@@ -57,7 +59,22 @@ Route::prefix('v1')->group(function () {
     ->parameters([
         'comentarios' => 'comentario'
     ]);
+
+    Route::apiResource('asignaciones_revision', AsignacionRevisionController::class)->parameters([
+        'asignaciones_revision' => 'asignacionRevision'
+    ]);
+
+    Route::apiResource('criterios_tarea', CriterioTareaController::class)->parameters([
+        'criterios_tarea' => 'criterioTarea'
+    ]);
+
+    Route::apiResource('evidencias.asignaciones_revision', AsignacionRevisionController::class)
+        ->parameters([
+            'evidencias' => 'evidencia',
+            'asignaciones_revision' => 'asignacionRevision'
+    ]);
 });
+
 
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
