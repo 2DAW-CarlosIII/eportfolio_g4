@@ -20,8 +20,8 @@ class ComentariosTableSeeder extends Seeder
             DB::table('comentarios')->insert([
                 'evidencia_id' => $comentario['evidencia_id'],
                 'user_id' => $comentario['user_id'],
-                'contenido' => $comentario('contenido'),
-                'tipo' => $comentario('tipo')
+                'contenido' => $comentario['contenido'],
+                'tipo' => $comentario['tipo']
             ]);
         }
         $this->command->info('¡Tabla comentarios inicializada con datos!');

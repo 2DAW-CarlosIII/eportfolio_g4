@@ -17,12 +17,12 @@ class EvaluacionesTableSeeder extends Seeder
         Evaluacion::truncate();
 
         foreach (self::$evaluaciones as $evaluacion) {
-            DB::table('matriculas')->insert([
+            DB::table('evaluaciones')->insert([
                 'evidencia_id' => $evaluacion['evidencia_id'],
                 'user_id' => $evaluacion['user_id'],
-                'puntuacion' => $evaluacion('puntuacion'),
-                'estado' => $evaluacion('estado'),
-                'observaciones' => $evaluacion('observaciones')
+                'puntuacion' => $evaluacion['puntuacion'],
+                'estado' => $evaluacion['estado'],
+                'observaciones' => $evaluacion['observaciones']
             ]);
         }
         $this->command->info('¡Tabla evaluaciones inicializada con datos!');
@@ -30,6 +30,6 @@ class EvaluacionesTableSeeder extends Seeder
 
     public static $evaluaciones = [
         ['evidencia_id' => 1, 'user_id' => 1, 'puntuacion' => 50.5, 'estado' => 'pendiente', 'observaciones' => ''],
-        ['evidencia_id' => 2, 'user_id' => 2, 'puntuacion' => 70, 'estado' => '', 'observaciones' => '']
+        ['evidencia_id' => 2, 'user_id' => 2, 'puntuacion' => 70.0, 'estado' => 'rechazada', 'observaciones' => '']
     ];
 }
