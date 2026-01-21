@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -17,12 +18,18 @@ Route::prefix('v1')->group(function () {
         'asignaciones_revision' => 'asignacionRevision'
     ]);
 
-     Route::apiResource('criterios_tarea', CriterioTareaController::class)->parameters([
+    Route::apiResource('criterios_tarea', CriterioTareaController::class)->parameters([
         'criterios_tarea' => 'criterioTarea'
     ]);
 
-
+    Route::apiResource('evidencias.asignaciones_revision', AsignacionRevisionController::class)
+        ->parameters([
+            'evidencias' => 'evidencia',
+            'asignaciones_revision' => 'asignacionRevision'
+        ]);
 });
+
+
 
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
