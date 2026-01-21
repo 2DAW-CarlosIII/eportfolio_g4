@@ -13,13 +13,11 @@ class TareasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        return TareasResource::collection(
-            Tarea::orderBy($request->sort ?? 'id', $request->order ?? 'asc')
-                ->paginate($request->per_page)
-        );
-    }
+    public function index(Request $request, $criterioId)
+{
+    return Tarea::where('criterio_evaluacion_id', $criterioId)
+        ->paginate($request->get('per_page', 15));
+}
 
     /**
      * Store a newly created resource in storage.
