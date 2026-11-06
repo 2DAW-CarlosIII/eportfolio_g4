@@ -13,7 +13,7 @@ use Tests\TestCase;
 class RA5_1_InstalacionTest extends TestCase
 {
     // Repositorio base del curso: "upstream" apunta a él; "origin", a tu fork.
-    private const REPO_BASE = '2DAW-CarlosIII/eportfolio';
+    private const REPO_BASE = 'AgustinBuendia/eportfolio';
 
     // Desde "workspace" se usa el nombre del servicio ("nginx"); la cabecera Host elige el sitio.
     private const NGINX = 'http://nginx/';
@@ -42,7 +42,7 @@ class RA5_1_InstalacionTest extends TestCase
     {
         $url = $this->urlRemoto('origin');
 
-        $this->assertStringContainsStringIgnoringCase('/eportfolio_g4', $url, 'El remoto "origin" debe ser tu fork de marcapersonalfp2627.');
+        $this->assertStringContainsStringIgnoringCase('/eportfolio', $url, 'El remoto "origin" debe ser tu fork de eportfolio.');
         $this->assertStringNotContainsStringIgnoringCase('2DAW-CarlosIII/', $url, '"origin" apunta al repositorio base, no a tu fork.');
     }
 
@@ -78,9 +78,8 @@ class RA5_1_InstalacionTest extends TestCase
         $respuesta = Http::withHeaders(['Host' => self::SITIO])->get(self::NGINX);
         $cookies   = implode("\n", $respuesta->toPsrResponse()->getHeader('Set-Cookie'));
 
-        $this->assertSame(200, $respuesta->status(), 'http://marcapersonalfp.test no responde 200: revisa el sitio de nginx y los permisos (--user=laradock).');
+        $this->assertSame(200, $respuesta->status(), 'http://eportfolio.test no responde 200: revisa el sitio de nginx y los permisos (--user=laradock).');
         // La cookie de sesión de Laravel se llama <app>-session (APP_NAME en minúsculas); la de PHP plano, PHPSESSID.
         $this->assertStringContainsString('-session=', $cookies, 'Quien responde no es Laravel: revisa server_name y root en marcapersonalfp.conf.');
     }
 }
-
