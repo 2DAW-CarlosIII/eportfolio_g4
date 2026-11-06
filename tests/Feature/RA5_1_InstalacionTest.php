@@ -13,11 +13,11 @@ use Tests\TestCase;
 class RA5_1_InstalacionTest extends TestCase
 {
     // Repositorio base del curso: "upstream" apunta a él; "origin", a tu fork.
-    private const REPO_BASE = '2DAW-CarlosIII/marcapersonalfp2627';
+    private const REPO_BASE = '2DAW-CarlosIII/eportfolio';
 
     // Desde "workspace" se usa el nombre del servicio ("nginx"); la cabecera Host elige el sitio.
     private const NGINX = 'http://nginx/';
-    private const SITIO = 'marcapersonalfp.test';
+    private const SITIO = 'eportfolio.test';
 
     /** URL del remoto indicado, leída de .git/config, o cadena vacía si no existe. */
     private function urlRemoto(string $remoto): string
@@ -42,7 +42,7 @@ class RA5_1_InstalacionTest extends TestCase
     {
         $url = $this->urlRemoto('origin');
 
-        $this->assertStringContainsStringIgnoringCase('/marcapersonalfp2627', $url, 'El remoto "origin" debe ser tu fork de marcapersonalfp2627.');
+        $this->assertStringContainsStringIgnoringCase('/eportfolio_g4', $url, 'El remoto "origin" debe ser tu fork de marcapersonalfp2627.');
         $this->assertStringNotContainsStringIgnoringCase('2DAW-CarlosIII/', $url, '"origin" apunta al repositorio base, no a tu fork.');
     }
 
@@ -68,8 +68,8 @@ class RA5_1_InstalacionTest extends TestCase
 
     public function test_configuracion_del_ejercicio_4(): void
     {
-        $this->assertSame('marcapersonalFP', config('app.name'));
-        $this->assertSame('http://marcapersonalfp.test', config('app.url'));
+        $this->assertSame('eportfolio', config('app.name'));
+        $this->assertSame('http://eportfolio.test', config('app.url'));
     }
 
     public function test_el_sitio_de_nginx_sirve_laravel(): void
