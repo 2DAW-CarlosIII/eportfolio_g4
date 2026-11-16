@@ -10,7 +10,7 @@ Route::prefix('evidencias')->name('evidencias.')->group(function(){
 
     Route::get('/', function () {
         return 'Listado de evidencias';
-    })name('index');
+    })->name('index');
 
 
     Route::get('show/{id}', function ($id) {
@@ -24,13 +24,13 @@ Route::prefix('evidencias')->name('evidencias.')->group(function(){
     Route::get('edit/{id}', function ($id) {
         return 'Modificar evidencia ' . e($id);
     })->name('edit')->whereNumber('id');
-})
+});
 
-Route::get('perfil/{id?}', function ($id=null){
-    if ($id === null) {
-        return 'Perfil del usuario ' .e($id)
+Route::get('perfil/{id?}', function ($id = null) {
+    if($id === null){
+        return 'Mi perfil';
     }else{
-        return 'Mi perfil'
+        return 'Perfil del usuario ' .e($id);  
     }
 })->name('perfil')->whereNumber('id');
 
