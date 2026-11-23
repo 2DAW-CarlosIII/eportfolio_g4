@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'Portada del ePortfolio';
+    return view('home', ['titulo' => 'Inicio']);
 });
 
 Route::prefix('evidencias')->name('evidencias.')->group(function () {
