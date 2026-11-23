@@ -1,5 +1,3 @@
-@props(['titulo' => null])
-
-<x-layout :titulo="$titulo">
-    <p>Bienvenido a {{ config('eportfolio.centro') }}</p>
+<x-layout titulo="SendIt">
+    <h1>Portada del ePortfolio</h1>
 </x-layout>

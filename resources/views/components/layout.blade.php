@@ -1,5 +1,5 @@
 @props(['titulo' => null])
 
-<x-bookme.layout :titulo="$titulo">
+<x-sendit.layout :titulo="$titulo">
     {{ $slot }}
-</x-bookme.layout>
+</x-sendit.layout>
