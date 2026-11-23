@@ -17,6 +17,7 @@
         "@laravel/multiplex": "^0.4.1"
     },
     "dependencies": {
+        "alpine": "^0.2.1",
         "alpinejs": "^3.17.5"
     }
 }
