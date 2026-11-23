@@ -14,4 +14,7 @@
             <small>{{$puesto}}</small>
         </div>
     </div>
+    @isset($saberMas)
+        {{ $saberMas }}
+    @endisset
 </div>
