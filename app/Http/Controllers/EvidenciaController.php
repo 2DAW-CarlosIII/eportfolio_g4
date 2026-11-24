@@ -12,9 +12,7 @@ class EvidenciaController extends Controller
     }
 
     public function index() {
-        foreach($this->evidencias as $evidencia){
-            echo $evidencia['descripcion'];
-        }
+        return view('evidencias', ['titulo' => 'Evidencias', 'evidencias' => $this->evidencias]);
     }
 
     public function create(): View{
