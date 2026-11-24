@@ -1,6 +1,6 @@
-@props(['naranja' => false])
+@props(['naranja' => false, 'href' => '#',])
 
-<a href="" @class([
+<a href="{{ $href }}" @class([
     'text-sm',
     'md:text-base',
     'bg-orange-500' => $naranja,
@@ -14,6 +14,4 @@
     'px-6',
     'hover:bg-orange-600' => $naranja,
     'hover:bg-gray-50' => ! $naranja,
-])>
-    {{ $slot }}
-</a>
+])>{{ $slot }}</a>
