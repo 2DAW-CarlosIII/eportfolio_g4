@@ -12,7 +12,7 @@ class EvidenciaController extends Controller
     }
 
     public function index() {
-        return view('evidencias/index', ['titulo' => 'Evidencias', 'evidencias' => $this->evidencias]);
+        return view('evidencias.index', ['titulo' => 'Evidencias', 'evidencias' => $this->evidencias]);
     }
 
     public function create(): View{
