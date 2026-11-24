@@ -31,3 +31,5 @@ Route::get('/acerca', function () {
         'centro'     => config('eportfolio.centro'),
     ];
 })->name('acerca');
+
+require __DIR__ .'/familias-profesionales.php';
