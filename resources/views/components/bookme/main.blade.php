@@ -87,7 +87,7 @@
 <section class="px-6 md:px-2">
     <div data-aos="fade-up"
         class="relative mx-auto sm:px-7 px-4 max-w-screen-xl py-10 flex items-center aos-init aos-animate">
-        <img src="./imgs/hero.png" class="mx-auto w-full max-w-[1000px] rounded shadow-2xl" alt="">
+        <img src="{{ asset('bookme/images/hero.png') }}" class="mx-auto w-full max-w-[1000px] rounded shadow-2xl" alt="">
     </div>
 </section>
 <section class="bg-gray-50">
@@ -210,7 +210,11 @@
         <div class="flex flex-col gap-4 w-full">
             <div class="w-full flex flex-col md:flex-row gap-4">
                 @foreach ($miembros as $miembro)
-                    <x-bookme.member :nombre="$miembro['nombre']" :puesto="$miembro['puesto']" :frase="$miembro['frase']" :imagen="$miembro['imagen']"/>
+                    <x-bookme.member :nombre="$miembro['nombre']" :puesto="$miembro['puesto']" :frase="$miembro['frase']" :imagen="$miembro['imagen']">
+                        <x-slot:saberMas>
+                            <x-bookme.boton naranja>+ info</x-bookme.boton>
+                        </x-slot:saberMas>
+                    </x-bookme.member>
                 @endforeach
             </div>
         </div>

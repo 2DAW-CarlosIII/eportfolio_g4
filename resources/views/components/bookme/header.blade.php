@@ -1,7 +1,7 @@
     <header class="border-b-2">
         <div class="mx-auto max-w-5xl px-6 py-4 flex flex-col md:flex-row gap-2 md:gap-8 items-center">
             <a href="/" class="font-bold text-xl">
-                <span class="text-orange-500"><i class="bi bi-bookmark-fill"></i> Book</span>me
+                <span class="text-orange-500"><i class="bi bi-bookmark-fill"></i> e</span>Portfolio
             </a>
             <x-bookme.navbar/>
             <div class="flex ml-0 md:ml-auto gap-2 md:gap-8 items-center">

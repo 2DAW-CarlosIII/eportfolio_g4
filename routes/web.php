@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PerfilController;
 
-Route::get('/', function () {
-    return view('home', ['titulo' => 'Inicio']);
-});
+Route::get('/', HomeController::class);
+Route::get('/perfil/{id?}', PerfilController::class)->whereNumber('id')->name('perfil');
 
 Route::prefix('evidencias')->name('evidencias.')->group(function () {
     Route::get('/', function () { 
@@ -23,10 +24,6 @@ Route::prefix('evidencias')->name('evidencias.')->group(function () {
         return 'Modificar evidencia ' . $id; 
         })->name('edit')->whereNumber('id');
 });
-
-Route::get('/perfil/{id?}', function ($id = null) {
-    return $id ? 'Perfil del usuario ' . $id : 'Mi perfil';
-})->whereNumber('id')->name('perfil');
 
 Route::get('/acerca', function () {
     return [
