@@ -1,4 +1,4 @@
-@props(['nombre' => null, 'puesto' => null, 'frase' => null, 'imagen' => null, 'estado'])
+@props(['nombre' => null, 'puesto' => null, 'frase' => null, 'imagen' => null])
 
 <div class="p-6 rounded border bg-white flex flex-col gap-6 w-full md:w-1/2 shadow-xl">
     <p>
@@ -15,15 +15,6 @@
             <strong>{{$nombre}}</strong>
             <small>{{$puesto}}</small>
         </div>
-        @isset($estado)
-            @if ($estado)
-                <div>
-                    <p @class([
-                        'color:red' => $estado = 'rechazada'
-                    ])>{{$estado}}</p>
-                </div>
-            @endif
-        @endisset
     </div>
     @isset($saberMas)
         {{ $saberMas }}
