@@ -5,9 +5,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerfilController;
 
 Route::get('/', HomeController::class);
+
 Route::get('/perfil/{id?}', PerfilController::class)->whereNumber('id')->name('perfil');
 
-Route::prefix('evidencias')->name('evidencias.')->group(function () {
+require __DIR__ . '/evidencias.php';
+
+
+/*Route::prefix('evidencias')->name('evidencias.')->group(function () {
     Route::get('/', function () { 
         return 'Listado de evidencias'; 
         })->name('index');
@@ -23,7 +27,7 @@ Route::prefix('evidencias')->name('evidencias.')->group(function () {
      Route::get('edit/{id}', function ($id) { 
         return 'Modificar evidencia ' . $id; 
         })->name('edit')->whereNumber('id');
-});
+});*/
 
 Route::get('/acerca', function () {
     return [
