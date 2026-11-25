@@ -1,4 +1,4 @@
-@props(['naranja' => false, 'href' => '#',])
+@props(['naranja' => false ,'href' => '#'])
 
 <a href="{{ $href }}" @class([
     'text-sm',
