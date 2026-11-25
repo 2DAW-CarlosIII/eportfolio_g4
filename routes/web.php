@@ -3,17 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\EvidenciaController;
 
 Route::get('/', HomeController::class);
 
 Route::get('/perfil/{id?}', PerfilController::class)->whereNumber('id')->name('perfil');
 
-Route::controller(EvidenciaController::class)->prefix('evidencias')->name('evidencias.')
-    ->group(
-        function(){
-            Route::get('/', 'index')->name('index');
-        });
+require __DIR__ . '/evidencias.php';
+
 
 /*Route::prefix('evidencias')->name('evidencias.')->group(function () {
     Route::get('/', function () { 
