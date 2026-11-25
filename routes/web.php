@@ -4,7 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/perfil/{id?}', PerfilController::class)->whereNumber('id')->name('perfil');
 
@@ -36,3 +36,5 @@ Route::get('/acerca', function () {
 
 require __DIR__.'/modulos-formativos.php';
 require __DIR__ .'/familias-profesionales.php';
+require __DIR__ .'/ciclos-formativos.php';
+
