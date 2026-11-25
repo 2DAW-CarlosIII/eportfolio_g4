@@ -36,4 +36,5 @@ Route::get('/acerca', function () {
     ];
 })->name('acerca');
 
+require __DIR__.'/modulos-formativos.php';
 require __DIR__ .'/familias-profesionales.php';
