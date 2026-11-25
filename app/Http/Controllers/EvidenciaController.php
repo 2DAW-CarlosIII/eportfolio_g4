@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 
 class EvidenciaController extends Controller
 {
-    public function show($id): View{
+    public function show($id) {
+        abort_unless(isset($this->evidencias[$id]), 404);
 
+        return view('evidencias.show', ['titulo' => 'Evidencia ' .$id, 'evidencias' => $this->evidencias, 'id' => $id]);
     }
 
     public function index() {
         return view('evidencias.index', ['titulo' => 'Listado de evidencias', 'evidencias' => $this->evidencias]);
     }
 
-    public function create(): View{
-        
+    public function create() {
+        return view('evidencias.create', ['titulo' => 'Nueva evidencia']);
     }
 
-    public function edit($id): View{
-        
+    public function edit($id) {
+        abort_unless(isset($this->evidencias[$id]), 404);
+
+        return view('evidencias.edit', ['titulo' => 'Modificar evidencia '.$id, 'id' => $id]);
     }
 
     private array $evidencias = [
