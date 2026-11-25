@@ -14,6 +14,4 @@
     'px-6',
     'hover:bg-orange-600' => $naranja,
     'hover:bg-gray-50' => ! $naranja,
-])>
-    {{ $slot }}
-</a>
+])>{{ $slot }}</a>

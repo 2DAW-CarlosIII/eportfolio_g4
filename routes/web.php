@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PerfilController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
@@ -16,13 +16,11 @@ require __DIR__ . '/evidencias.php';
         return 'Listado de evidencias'; 
         })->name('index');
 
-    Route::get('show/{id}', function ($id) { 
-        return 'Evidencia ' . $id; 
-        })->name('show')->whereNumber('id');
+Route::get('hola/{nombre?}', function ($nombre = 'mundo') {
+     return '¡Hola, ' . e($nombre) . '!';
+ });
 
-    Route::get('create', function () { 
-        return 'Nueva evidencia';
-        })->name('create');
+require __DIR__ . '/ciclos-formativos.php';
 
      Route::get('edit/{id}', function ($id) { 
         return 'Modificar evidencia ' . $id; 

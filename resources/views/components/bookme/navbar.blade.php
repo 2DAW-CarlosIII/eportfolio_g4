@@ -4,6 +4,7 @@ use App\Http\Controllers\EvidenciaController;
 <nav>
     <ul class="flex gap-4 text-sm md:text-base">
         <li>
+            <a href="/ciclos-formativos" class="hover:text-orange-500">Ciclos formativos</a>
             <a href="/" class="hover:text-orange-500">Inicio</a>
         </li>
         <li>
