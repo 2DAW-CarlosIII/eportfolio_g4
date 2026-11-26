@@ -9,6 +9,12 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/perfil/{id?}', PerfilController::class)->whereNumber('id')->name('perfil');
 
 require __DIR__ . '/evidencias.php';
+/* issue principal prueba:
+Route::get('/prueba-mensaje', function () {
+    return redirect()->route('evidencias.index')
+        ->with('mensaje', 'Esto es un mensaje de prueba.');
+}); */
+
 
 
 /*Route::prefix('evidencias')->name('evidencias.')->group(function () {
