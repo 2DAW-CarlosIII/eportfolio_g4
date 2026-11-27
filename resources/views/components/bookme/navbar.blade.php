@@ -7,6 +7,9 @@
             <a href="{{route('ciclos-formativos.index')}}" class="hover:text-orange-500">Ciclos formativos</a>
         </li>
         <li>
+            <a href="{{ route('familias-profesionales.index') }}" class="hover:text-orange-500">Familias profesionales</a>
+        </li>
+        <li>
             <a href="{{ route('modulos-formativos.index') }}" class="hover:text-orange-500">
                 Módulos formativos
             </a>

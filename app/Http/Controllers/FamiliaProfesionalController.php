@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\FamiliaProfesionalRequest;
 class FamiliaProfesionalController extends Controller{
     private array $familiasProfesionales = array(
         array(
@@ -153,6 +155,24 @@ class FamiliaProfesionalController extends Controller{
     public function edit($id){
         abort_unless(isset( $this->familiasProfesionales[$id]),404);
 
-        return view ('familias-profesionales.edit', ['id' => $id]);
+        return view ('familias-profesionales.edit', [
+            'id' => $id,
+            'familia' => $this->familiasProfesionales[$id]]);
+    }
+    public function store(FamiliaProfesionalRequest $request)
+    {
+        $datos = $request->validated();
+        return redirect()
+        ->route('familias-profesionales.index')
+        ->with('mensaje',"Familia profesional «{$datos['nombre']}» creada.");
+    }
+     public function update(FamiliaProfesionalRequest $request, $id)
+    {
+        abort_unless(isset($this->familiasProfesionales[$id]),404);
+
+        $datos = $request->validated();
+        return redirect()
+        ->route('familias-profesionales.show',$id)
+        ->with('mensaje',"Familia profesional «{$datos['nombre']}» actualizada.");
     }
 }
