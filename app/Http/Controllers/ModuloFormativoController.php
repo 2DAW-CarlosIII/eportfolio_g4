@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use App\Http\Requests\ModuloFormativoRequest;
+use Illuminate\Http\RedirectResponse;
+
 
 class ModuloFormativoController extends Controller
 {
@@ -803,10 +806,34 @@ class ModuloFormativoController extends Controller
         return view('modulos-formativos.create');
     }
 
+
     public function edit($id): View
     {
-        abort_unless(isset($this->modulosFormativos[$id]), 404);
+    abort_unless(isset($this->modulosFormativos[$id]), 404);
 
-        return view('modulos-formativos.edit', ['id' => $id]);
+    return view('modulos-formativos.edit', [
+        'id' => $id,
+        'modulo' => $this->modulosFormativos[$id],
+    ]);
+    }
+
+    public function store(ModuloFormativoRequest $request): RedirectResponse
+    {
+    $datos = $request->validated();
+
+    return redirect()
+        ->route('modulos-formativos.index')
+        ->with('mensaje', 'Módulo formativo «' . $datos['nombre'] . '» creado.');
+    }   
+
+    public function update(ModuloFormativoRequest $request, $id): RedirectResponse
+    {
+    abort_unless(isset($this->modulosFormativos[$id]), 404);
+
+    $datos = $request->validated();
+
+    return redirect()
+        ->route('modulos-formativos.show', $id)
+        ->with('mensaje', 'Módulo formativo «' . $datos['nombre'] . '» actualizado.');
     }
 }
