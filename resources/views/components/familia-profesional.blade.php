@@ -4,7 +4,7 @@
         <span class="font-semibold">Código</span>{{ $familia['codigo'] }}
     </p>
     <h2 class="text-2xl font-bold text-gray-800">
-        {{ ucfirst(mb_strtolower($familia['nombre'])) }}
+        {{ $familia['nombre'] }}
     </h2>
     <a href="{{ route('familias-profesionales.show', $id) }}"
     class="inline-block mt-3 px-6 py-2 border border-orange-400 rounded font-semibold text-gray-700 hover:bg-orange-50">
