@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Http\Controllers\ciclosformativosRequest;
+use App\Http\Requests\CicloFormativoRequest;
 class CicloFormativoController extends Controller
 {
 
@@ -37,14 +37,24 @@ class CicloFormativoController extends Controller
             'id' => $id,
         ]);
     }
-     public function store(ciclosformativosRequest $request){
+    public function store(CicloFormativoRequest $request)
+    {
         $datos = $request->validated();
-        return redirect()->route('ciclos-formativos.index')->with('mensaje', 'Evidencia '. $datos['descripcion'] .' creada.');
+
+        return redirect()
+            ->route('ciclos-formativos.index')
+            ->with('mensaje', 'Ciclo formativo «' . $datos['nombre'] . '» creado.');
     }
 
-    public function update(ciclosformativosRequest $request, $id){
+    public function update(CicloFormativoRequest $request, int $id)
+    {
+        abort_unless(isset($this->ciclosFormativos[$id]), 404);
+
         $datos = $request->validated();
-        return redirect()->route('ciclos-formativos.show', ['id' => $id])->with('mensaje', 'Evidencia '. $id .' actualizada');
+
+        return redirect()
+            ->route('ciclos-formativos.show', ['id' => $id])
+            ->with('mensaje', 'Ciclo formativo «' . $datos['nombre'] . '» actualizado.');
     }
 
 
