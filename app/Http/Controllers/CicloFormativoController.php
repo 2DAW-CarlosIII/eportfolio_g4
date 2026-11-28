@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
+use App\Http\Requests\CicloFormativoRequest;
 class CicloFormativoController extends Controller
 {
 
@@ -37,6 +37,26 @@ class CicloFormativoController extends Controller
             'id' => $id,
         ]);
     }
+    public function store(CicloFormativoRequest $request)
+    {
+        $datos = $request->validated();
+
+        return redirect()
+            ->route('ciclos-formativos.index')
+            ->with('mensaje', 'Ciclo formativo «' . $datos['nombre'] . '» creado.');
+    }
+
+    public function update(CicloFormativoRequest $request, int $id)
+    {
+        abort_unless(isset($this->ciclosFormativos[$id]), 404);
+
+        $datos = $request->validated();
+
+        return redirect()
+            ->route('ciclos-formativos.show', ['id' => $id])
+            ->with('mensaje', 'Ciclo formativo «' . $datos['nombre'] . '» actualizado.');
+    }
+
 
     private $ciclosFormativos = array(
         // ACTIVIDADES FÍSICAS Y DEPORTIVAS (AFD)
